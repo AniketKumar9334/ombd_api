@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link href="style.css" rel="stylesheet" media="all" />
+<link href="portrait.css" rel="stylesheet" media="(orientation:portrait)" />
+<link href="print.css" rel="stylesheet" media="print" />
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="search__box">
+        <input
+          type="text"
+          id="search"
+          placeholder="Search for a movie or tv show..."
+        />
+        <button id="search__btn">Search</button>
+      </div>
+      <div class="movie__content"></div>
+      <div class="loading">
+        <div class="loader"></div>
+      </div>
+      <div class="error">
+            <p class="error-text">
+                
+            </p>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
