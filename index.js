@@ -54,13 +54,14 @@ const getMovieData = async (query) => {
   }
 };
 const displayMovie = (data) => {
+  const IMG = "https://ih1.redbubble.net/image.5098928977.2456/st,small,845x845-pad,1000x1000,f8f8f8.u2.jpg"
   data.map((item) => {
     movieContainer.innerHTML += `
         <div>
             <div class="img">
                 <img src=${
-                  !item.Poster === ""
-                    ? "https://ih1.redbubble.net/image.5098928977.2456/st,small,845x845-pad,1000x1000,f8f8f8.u2.jpg"
+                  !item.Poster === "N/A"
+                    ? IMG
                     : item.Poster
                 } alt="img">
                 <div class="genres">
