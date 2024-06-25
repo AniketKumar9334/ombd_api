@@ -38,21 +38,31 @@ const getMovieData = async (query) => {
   try {
     const res = await fetch(`${URL}&s=${query}`);
     const data = await res.json();
+    let data1;
+    if (data.totalResults > 10) {
+      const res1 = await fetch(`${URL}&s=${query}&page=2`);
+      data1 = await res1.json();
+    }
+    let allData = data.Search.concat(data1 ? data1.Search : []);
     loadingLoader.style.display = "none";
     errorText.innerHTML = "";
 
-    displayMovie(data.Search);
+    displayMovie(allData);
   } catch (error) {
     loadingLoader.style.display = "none";
     errorText.innerHTML = "Something went wrong please try again...";
   }
 };
 const displayMovie = (data) => {
-  data.map(item =>{
+  data.map((item) => {
     movieContainer.innerHTML += `
         <div>
             <div class="img">
-                <img src=${!item.Poster === "" ? "https://ih1.redbubble.net/image.5098928977.2456/st,small,845x845-pad,1000x1000,f8f8f8.u2.jpg" : item.Poster } alt="img">
+                <img src=${
+                  !item.Poster === ""
+                    ? "https://ih1.redbubble.net/image.5098928977.2456/st,small,845x845-pad,1000x1000,f8f8f8.u2.jpg"
+                    : item.Poster
+                } alt="img">
                 <div class="genres">
                     <p>${item.Type}</p>
                 </div>
@@ -63,5 +73,5 @@ const displayMovie = (data) => {
             </div>
         </div>
     `;
-  })
+  });
 };
