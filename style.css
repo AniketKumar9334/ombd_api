@@ -39,17 +39,21 @@ img {
   background: linear-gradient(98.37deg, #f89e00 0.99%, #da2f68 100%);
 }
 .container .movie__content {
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column; */
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  row-gap: 1rem;
   color: white;
 }
 .container .movie__content .img {
   border-radius: 12px;
-  width: 15rem;
+  width: 13rem;
   position: relative;
   cursor: pointer;
+  aspect-ratio: 9/14;
 }
 .container .movie__content .img .genres {
   position: absolute;
@@ -68,15 +72,16 @@ img {
 .container .movie__content .content {
   display: flex;
   flex-direction: column;
-}
-.container .movie__content .content h1 {
-  font-size: 2.1rem;
-  font-weight: 700;
-  line-height: 1.2;
-  text-transform: capitalize;
+  padding: 0 0.5rem;
 }
 .container .movie__content .content p {
   color: gray;
+}
+.container .movie__content .content h5 {
+
+  line-height: 1.2;
+  color: white;
+  text-transform: capitalize;
 }
 .container .loading{
   display: flex;

@@ -36,32 +36,32 @@ searchBtn.addEventListener("click", () => {
 
 const getMovieData = async (query) => {
   try {
-    const res = await fetch(`${URL}&t=${query}`);
+    const res = await fetch(`${URL}&s=${query}`);
     const data = await res.json();
     loadingLoader.style.display = "none";
     errorText.innerHTML = "";
 
-    displayMovie(data);
+    displayMovie(data.Search);
   } catch (error) {
     loadingLoader.style.display = "none";
     errorText.innerHTML = "Something went wrong please try again...";
   }
 };
 const displayMovie = (data) => {
-  let genre = data.Genre?.split(",");
-  movieContainer.innerHTML += `
+  data.map(item =>{
+    movieContainer.innerHTML += `
         <div>
             <div class="img">
-                <img src=${data?.Poster} alt="img">
+                <img src=${!item.Poster === "" ? "https://ih1.redbubble.net/image.5098928977.2456/st,small,845x845-pad,1000x1000,f8f8f8.u2.jpg" : item.Poster } alt="img">
                 <div class="genres">
-                    <p>${genre ? genre[0] : ""}</p>
-                    <p>${genre ? genre[1] : ""}</p>
+                    <p>${item.Type}</p>
                 </div>
             </div>
             <div class="content">
-                <h1>${data?.Title}</h1>
-                <p>${data?.Released}</p>
+                <h5>${item?.Title}</h5>
+                <p>${item?.Year}</p>
             </div>
         </div>
     `;
+  })
 };
